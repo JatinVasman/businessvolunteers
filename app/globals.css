@@ -1,0 +1,17 @@
+* { margin: 0; box-sizing: border-box; }
+html, body, #root { width: 100%; }
+html { scroll-behavior: smooth; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: #C9963B !important; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-33.33%); } }
+@keyframes revscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.rev-track:hover { animation-play-state: paused; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: #C9963B; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #F4EDE3; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
