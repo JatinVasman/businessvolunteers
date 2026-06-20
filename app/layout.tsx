@@ -1,6 +1,7 @@
 import "./globals.css";
 import Shell from "../components/Shell";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: "#1C140D",
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/img0.png" },
+  verification: {
+    google: "n-XLdo7LThxcPy5__rL9MHC4VR2Z9cloMnrLCYPltjU",
+  },
 };
 
 const ORG_SCHEMA = {
@@ -56,6 +60,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-MP8FMVJFJE"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-MP8FMVJFJE');
+          `}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }} />
         <Shell>{children}</Shell>
       </body>
