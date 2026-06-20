@@ -24,7 +24,7 @@ function CaseStudiesPage({ go }) {
       <div style={{ textAlign:"center", color:T.text2, fontSize:11.5, marginBottom:24, letterSpacing:1.2, textTransform:"uppercase" }}>
         {filter==="All" ? `Showing ${shown.length} of ${all.length} — select an industry for its full set` : `${shown.length} case studies · ${filter}`}
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(330px,1fr))", gap:18, marginBottom:40 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:18, marginBottom:40 }}>
         {shown.map((cs,i)=>(
           <FadeIn key={cs.title} delay={(i%6)*40}>
             <div onClick={()=>openCaseStudyGlobal(cs)} style={{ background:T.bg2, border:`1px solid ${T.cardB}`, borderRadius:20, padding:26, position:"relative", overflow:"hidden", boxShadow:`0 10px 30px ${T.shadow}`, height:"100%", cursor:"pointer" }}>

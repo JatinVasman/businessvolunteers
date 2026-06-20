@@ -16,15 +16,15 @@ function FounderPage({ go }) {
       <FadeIn>
         <div style={{ background: T.bg2, border: `1px solid ${T.cardBGold}`, borderRadius: 28, padding: "44px 40px", marginBottom: 30, position: "relative", overflow: "hidden", boxShadow: `0 24px 60px ${T.shadow}` }}>
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: T.gradLux }} />
-          <div style={{ display: "flex", gap: 34, flexWrap: "wrap", alignItems: "center" }}>
-            <div style={{ width: 150, height: 150, borderRadius: "50%", background: T.gradLux, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: T.serif, fontSize: 46, fontWeight: 800, flexShrink: 0, boxShadow: `0 18px 44px ${T.shadowWarm}`, overflow: "hidden" }}><img src={FOUNDER_IMG} alt="Harsh Chaudhary" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} /></div>
+          <div className="bv-hero-flex">
+            <div className="bv-hero-image" style={{ width: 150, height: 150, borderRadius: "50%", background: T.gradLux, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: T.serif, fontSize: 46, fontWeight: 800, flexShrink: 0, boxShadow: `0 18px 44px ${T.shadowWarm}`, overflow: "hidden" }}><img src={FOUNDER_IMG} alt="Harsh Chaudhary" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} /></div>
             <div style={{ flex: 1, minWidth: 260 }}>
               <Eyebrow>Founder & CEO</Eyebrow>
               <h1 style={{ fontFamily: T.serif, fontSize: "clamp(28px,4vw,42px)", fontWeight: 700, color: T.ink, margin: "0 0 10px", letterSpacing: -.5 }}>Harsh Chaudhary</h1>
               <p style={{ color: T.text2, fontSize: 15.5, lineHeight: 1.8, margin: "0 0 20px", maxWidth: 580, fontFamily: T.serif, fontStyle: "italic" }}>
                 "Great businesses deserve great marketing — my mission is to make every brand we work with unstoppable."
               </p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <div className="bv-hero-cta">
                 <a href="https://www.linkedin.com/in/heyharsh2026" target="_blank" rel="noopener noreferrer" style={btnDark}>Connect on LinkedIn</a>
                 <button onClick={() => go("contact")} style={btnGhost}>Work with Harsh →</button>
               </div>

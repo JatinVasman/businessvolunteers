@@ -32,7 +32,7 @@ function BlogPage({ go }) {
       <div style={{ textAlign:"center", color:T.text2, fontSize:11.5, marginBottom:24, letterSpacing:1.2, textTransform:"uppercase" }}>
         {filtered.length>shown.length ? `Showing ${shown.length} of ${filtered.length} — filter or search to narrow` : `${shown.length} articles${filter!=="All"?` · ${filter}`:""}`}
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:16, marginBottom:40 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:16, marginBottom:40 }}>
         {shown.map((b,i)=>{
           const mt = blogMeta(b);
           const ind = NAME2ID[b.tag] ? INDUSTRY_DATA[NAME2ID[b.tag]] : null;

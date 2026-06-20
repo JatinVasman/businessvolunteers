@@ -77,7 +77,7 @@ function PortfolioPage({ go }) {
           <p style={{ textAlign:"center", color:T.text2, fontSize:13, lineHeight:1.7, marginBottom:32, maxWidth:560, margin:"0 auto 32px" }}>
             {SMM_PORTFOLIO.length} live social media projects. Click any card to enlarge.
           </p>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:20, marginBottom:48 }}>
+          <div className="bv-smm-grid">
             {SMM_PORTFOLIO.map((p)=>(
               <div
                 key={p.id}
@@ -102,7 +102,7 @@ function PortfolioPage({ go }) {
           <p style={{ textAlign:"center", color:T.text2, fontSize:13, lineHeight:1.7, marginBottom:32, maxWidth:560, margin:"0 auto 32px" }}>
             {WEB_PORTFOLIO.length} live websites — mobile-first, SEO-ready, conversion-focused.
           </p>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:24, marginBottom:48 }}>
+          <div className="bv-web-grid">
             {WEB_PORTFOLIO.map((p)=>(
               <div
                 key={p.id}

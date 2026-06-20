@@ -119,7 +119,7 @@ function ContactPage({ go }) {
             <textarea value={form.message} onChange={e=>upd("message",e.target.value)} rows={4} placeholder="Tell us about your business and goals... *" style={{ ...inputStyle, resize:"vertical", marginBottom:20 }} />
 
             {/* Two CTA buttons */}
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+            <div className="bv-contact-btn-grid">
               <button onClick={sendEmail} disabled={sending} style={{ background: sending ? T.text2 : T.ink, color:"#fff", borderRadius:50, padding:"14px", fontWeight:800, fontSize:13.5, border:"none", cursor: sending ? "not-allowed" : "pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8, opacity: sending ? 0.7 : 1, transition:"opacity 0.2s" }}>
                 {sending ? (
                   <>

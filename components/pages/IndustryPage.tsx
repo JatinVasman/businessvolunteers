@@ -178,7 +178,7 @@ function IndustryPage({ id, onBack, go }) {
       )}
 
       {tab==="casestudies" && (
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(350px,1fr))", gap:20 }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:20 }}>
           {d.caseStudies.map((cs,i)=>(
             <FadeIn key={i} delay={i*40}>
               <div onClick={()=>openCaseStudyGlobal(cs)} style={{ background:T.bg2, border:`1px solid ${T.cardB}`, borderRadius:20, padding:28, position:"relative", overflow:"hidden", boxShadow:`0 10px 30px ${T.shadow}`, height:"100%", cursor:"pointer" }}>

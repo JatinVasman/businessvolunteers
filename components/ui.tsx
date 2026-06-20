@@ -109,6 +109,8 @@ export function Crumb({ items, go }) {
 
 export function Nav({ page, go }) {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const items = [
     { k:"home", l:"Home" },
     { k:"about", l:"About", drop:true },
@@ -121,10 +123,18 @@ export function Nav({ page, go }) {
     { k:"contact", l:"Contact" },
   ];
   const aboutActive = ABOUT_PAGES.some(a=>a.k===page);
+
+  const handleNav = (p) => {
+    go(p);
+    setMobileMenuOpen(false);
+    setMobileAboutOpen(false);
+    setAboutOpen(false);
+  };
+
   return (
     <nav style={{ background:"rgba(250,246,240,0.94)", borderBottom:`1px solid ${T.cardB}`, position:"sticky", top:0, zIndex:100, backdropFilter:"blur(18px)" }}>
-      <div style={{ maxWidth:1180, margin:"0 auto", minHeight:66, display:"flex", alignItems:"center", justifyContent:"space-between", padding:"8px 24px", gap:10, flexWrap:"wrap" }}>
-        <div onClick={()=>go("home")} style={{ display:"flex", alignItems:"center", gap:11, cursor:"pointer", flexShrink:0 }}>
+      <div style={{ maxWidth:1180, margin:"0 auto", minHeight:66, display:"flex", alignItems:"center", justifyContent:"space-between", padding:"8px 24px", gap:10 }}>
+        <div onClick={()=>handleNav("home")} style={{ display:"flex", alignItems:"center", gap:11, cursor:"pointer", flexShrink:0 }}>
           <div style={{ width:40, height:40, borderRadius:11, overflow:"hidden", boxShadow:`0 6px 18px ${T.shadowWarm}`, flexShrink:0 }}>
             <img src={LOGO} alt="Business Volunteers Logo" style={{ width:"100%", height:"100%", objectFit:"cover" }}
               onError={e=>{ e.target.style.display="none"; e.target.parentNode.style.background=T.gradLux; e.target.parentNode.innerHTML="<span style='color:#fff;font-weight:900;font-size:14px;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;height:100%'>BV</span>"; }} />
@@ -133,7 +143,9 @@ export function Nav({ page, go }) {
             <div style={{ fontWeight:800, fontSize:15, color:T.ink, fontFamily:T.serif, letterSpacing:.3, lineHeight:1.1 }}>Business Volunteers</div>
           </div>
         </div>
-        <div style={{ display:"flex", gap:2, alignItems:"center", flexWrap:"wrap" }}>
+
+        {/* Desktop menu */}
+        <div className="bv-desktop-nav-links" style={{ gap:2 }}>
           {items.map(it => it.drop ? (
             <div key="about" style={{ position:"relative" }}>
               <button onClick={()=>setAboutOpen(!aboutOpen)}
@@ -143,7 +155,7 @@ export function Nav({ page, go }) {
               {aboutOpen && (
                 <div style={{ position:"absolute", top:"110%", left:0, background:T.bg2, border:`1px solid ${T.cardBGold}`, borderRadius:16, padding:8, minWidth:260, boxShadow:`0 24px 60px ${T.shadow}`, zIndex:200 }}>
                   {ABOUT_PAGES.map(a => (
-                    <button key={a.k} onClick={()=>{ go(a.k); setAboutOpen(false); }}
+                    <button key={a.k} onClick={()=>handleNav(a.k)}
                       style={{ display:"block", width:"100%", textAlign:"left", background:page===a.k?T.bg3:"none", border:"none", borderRadius:10, padding:"10px 14px", fontSize:12.5, color:page===a.k?T.ink:T.text2, fontWeight:page===a.k?700:500, cursor:"pointer" }}>
                       {a.l}
                     </button>
@@ -152,7 +164,7 @@ export function Nav({ page, go }) {
               )}
             </div>
           ) : (
-            <button key={it.k} onClick={()=>{ go(it.k); setAboutOpen(false); }}
+            <button key={it.k} onClick={()=>handleNav(it.k)}
               style={{ background:"none", border:"none", borderBottom:page===it.k?`2px solid ${T.gold}`:"2px solid transparent", color:page===it.k?T.ink:T.text2, padding:"8px 11px", cursor:"pointer", fontSize:13, fontWeight:page===it.k?700:500, letterSpacing:.3 }}>
               {it.l}
             </button>
@@ -162,6 +174,52 @@ export function Nav({ page, go }) {
             Start a Project →
           </a>
         </div>
+
+        {/* Mobile Nav Button */}
+        <button className="bv-mobile-nav-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle navigation menu">
+          {mobileMenuOpen ? "✕" : "☰"}
+        </button>
+      </div>
+
+      {/* Mobile Drawer Backdrop */}
+      <div className={`bv-mobile-drawer-overlay ${mobileMenuOpen ? "open" : ""}`} onClick={() => setMobileMenuOpen(false)} />
+
+      {/* Mobile Drawer */}
+      <div className={`bv-mobile-drawer ${mobileMenuOpen ? "open" : ""}`}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:20, borderBottom:`1px solid ${T.cardB}`, paddingBottom:12 }}>
+          <span style={{ fontWeight:800, fontSize:16, color:T.ink, fontFamily:T.serif }}>Navigation</span>
+          <button onClick={() => setMobileMenuOpen(false)} style={{ background:"none", border:"none", fontSize:20, color:T.ink, cursor:"pointer" }}>✕</button>
+        </div>
+
+        {items.map(it => it.drop ? (
+          <div key="mob-about" style={{ display:"flex", flexDirection:"column" }}>
+            <button onClick={()=>setMobileAboutOpen(!mobileAboutOpen)}
+              style={{ background:"none", border:"none", borderBottom:`1px solid ${aboutActive?T.gold:"transparent"}`, color:aboutActive?T.ink:T.text2, padding:"12px 0", cursor:"pointer", fontSize:14.5, fontWeight:aboutActive?700:500, textAlign:"left", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <span>About</span>
+              <span style={{ fontSize:12 }}>{mobileAboutOpen ? "▲" : "▼"}</span>
+            </button>
+            {mobileAboutOpen && (
+              <div style={{ paddingLeft:14, display:"flex", flexDirection:"column", gap:2, marginTop:4, borderLeft:`2px solid ${T.cardBGold}` }}>
+                {ABOUT_PAGES.map(a => (
+                  <button key={a.k} onClick={()=>handleNav(a.k)}
+                    style={{ background:"none", border:"none", color:page===a.k?T.ink:T.text2, padding:"8px 0", fontSize:13, fontWeight:page===a.k?700:500, cursor:"pointer", textAlign:"left" }}>
+                    {a.l}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <button key={it.k} onClick={()=>handleNav(it.k)}
+            style={{ background:"none", border:"none", borderBottom:`1px solid ${page===it.k?T.gold:"transparent"}`, color:page===it.k?T.ink:T.text2, padding:"12px 0", cursor:"pointer", fontSize:14.5, fontWeight:page===it.k?700:500, textAlign:"left" }}>
+            {it.l}
+          </button>
+        ))}
+
+        <a href="https://wa.me/918586989832" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}
+          style={{ marginTop:24, background:T.ink, color:"#fff", borderRadius:50, padding:"13px 20px", fontWeight:700, fontSize:13, textAlign:"center", display:"block", textDecoration:"none", letterSpacing:.5 }}>
+          Start a Project →
+        </a>
       </div>
     </nav>
   );

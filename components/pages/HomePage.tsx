@@ -44,9 +44,9 @@ function HomePage({ go, openService }) {
 
       {/* Stats Band */}
       <FadeIn>
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))", background:T.bg2, border:`1px solid ${T.cardBGold}`, borderRadius:24, overflow:"hidden", marginBottom:76, boxShadow:`0 24px 60px ${T.shadow}` }}>
+        <div className="bv-stats-band-light" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))", background:T.bg2, border:`1px solid ${T.cardBGold}`, borderRadius:24, overflow:"hidden", marginBottom:76, boxShadow:`0 24px 60px ${T.shadow}` }}>
           {[{n:"2786",l:"Happy Clients"},{n:"89",l:"Industries Served"},{n:"100%",l:"Satisfaction Rate"},{n:"501",l:"Delivered Projects"}].map((s,i)=>(
-            <div key={i} style={{ borderRight:i<3?`1px solid ${T.cardB}`:"none", padding:"30px 14px", textAlign:"center" }}>
+            <div key={i} className="bv-stats-item" style={{ padding:"30px 14px", textAlign:"center" }}>
               <div style={{ fontSize:30, fontWeight:800, fontFamily:T.serif, background:T.gradLux, WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}><CountUp target={s.n} go={vis} /></div>
               <div style={{ fontSize:11.5, color:T.text2, marginTop:7, letterSpacing:1.5, textTransform:"uppercase" }}>{s.l}</div>
             </div>
