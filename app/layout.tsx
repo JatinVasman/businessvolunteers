@@ -1,6 +1,7 @@
 import "./globals.css";
 import Shell from "../components/Shell";
 import type { Metadata, Viewport } from "next";
+import { Analytics } from '@vercel/analytics/next';
 
 export const viewport: Viewport = {
   themeColor: "#1C140D",
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }} />
         <Shell>{children}</Shell>
+        <Analytics />
       </body>
     </html>
   );
