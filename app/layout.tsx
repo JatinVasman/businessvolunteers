@@ -25,9 +25,30 @@ export const metadata: Metadata = {
     title: "Business Volunteers | Digital Marketing Agency in Noida, India",
     description: "Founder-led digital marketing across 89+ industries — SEO, ads, social, web and design.",
     url: "https://businessvolunteers.online/",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 512,
+        height: 512,
+        alt: "Business Volunteers Logo",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
-  icons: { icon: "/img0.png" },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/favicon.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "any", type: "image/png" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+  },
   verification: {
     google: "n-XLdo7LThxcPy5__rL9MHC4VR2Z9cloMnrLCYPltjU",
   },
@@ -41,7 +62,7 @@ const ORG_SCHEMA = {
       "@id": "https://businessvolunteers.online/#org",
       name: "Business Volunteers",
       url: "https://businessvolunteers.online/",
-      logo: "https://businessvolunteers.online/img0.png",
+      logo: "https://businessvolunteers.online/favicon.png",
       description: "Founder-led digital marketing agency serving 89+ industries.",
       address: { "@type": "PostalAddress", addressLocality: "Noida", addressRegion: "Uttar Pradesh", addressCountry: "IN" },
       contactPoint: { "@type": "ContactPoint", telephone: "+91-85869-89832", contactType: "sales", areaServed: "IN" },
