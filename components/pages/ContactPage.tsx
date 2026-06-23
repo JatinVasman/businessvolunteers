@@ -31,10 +31,7 @@ function ContactPage({ go }) {
     const body = encodeURIComponent(
       `Hi Business Volunteers,\n\nName: ${form.name.trim()}\nEmail: ${form.email.trim()}\nPhone: ${form.phone.trim() || "N/A"}\nService: ${form.service || "N/A"}\n\n${form.message.trim()}`
     );
-    window.open(
-      `mailto:contact.businessvolunteers@gmail.com?subject=${subject}&body=${body}`,
-      "_self"
-    );
+    window.location.href = `mailto:contact.businessvolunteers@gmail.com?subject=${subject}&body=${body}`;
   }
 
   function sendWhatsApp() {
@@ -59,7 +56,7 @@ function ContactPage({ go }) {
           { icon:"◉", l:"Location", v:"Noida Sector 62, UP", h:"#" },
           { icon:"◷", l:"Hours", v:"Mon–Sat · 9AM–6PM IST", h:"#" },
         ].map((c,i)=>(
-          <a key={i} href={c.h} target="_blank" rel="noopener noreferrer"
+          <a key={i} href={c.h} {...(c.h.startsWith("mailto:") ? {} : { target:"_blank", rel:"noopener noreferrer" })}
             style={{ background:T.bg2, border:`1px solid ${T.cardB}`, borderRadius:16, padding:18, display:"flex", gap:14, alignItems:"center", boxShadow:`0 6px 20px ${T.shadow}` }}>
             <span style={{ fontSize:20, color:T.gold }}>{c.icon}</span>
             <div>
