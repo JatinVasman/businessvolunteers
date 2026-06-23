@@ -54,7 +54,7 @@ function FounderPage({ go }) {
             I started Business Volunteers because I saw so many small brands bursting with potential yet left behind by big agencies' one-size-fits-all approach. From Day 1, my philosophy has been simple: <strong style={{ color: T.ink }}>great businesses deserve great marketing.</strong> By combining data-driven insights with creative storytelling, we help our clients not just reach new customers, but build lasting brand loyalty.
           </p>
           <p style={{ color: T.text2, fontSize: 14.5, lineHeight: 1.95, margin: 0 }}>
-            My journey began with a B.Sc in Animation & VFX from AAFT, Film City Noida — a creative foundation that taught me how stories move people. Years of hands-on marketing, operations and performance-tracking experience taught me the other half: how numbers move businesses. Business Volunteers is the marriage of both. Today, after guiding 2,200+ companies to growth, I still roll up my sleeves on every project — treating each client's business as my own is at the heart of everything we do.
+            My journey began with a B.Sc in Animation & VFX from AAFT, Film City Noida — a creative foundation that taught me how stories move people. Years of hands-on marketing, operations and performance-tracking experience taught me the other half: how numbers move businesses. Business Volunteers is the marriage of both. Today, after guiding 2,700+ companies to growth, I still roll up my sleeves on every project — treating each client's business as my own is at the heart of everything we do.
           </p>
         </div>
       </FadeIn>
@@ -84,7 +84,7 @@ function FounderPage({ go }) {
           { y: "Foundation", t: "Creative Education", d: "B.Sc in Animation & VFX from AAFT, Film City Noida — building the visual storytelling instincts that now power our creative studio." },
           { y: "Apprenticeship", t: "Hands-On Marketing & Operations", d: "Years across HR operations, executive support, MIS reporting and performance dashboards — learning how businesses really run from the inside." },
           { y: "2025", t: "Business Volunteers Founded", d: "Launched in Noida Sector 62 with a singular mission: make every brand we work with unstoppable through affordable, accountable marketing." },
-          { y: "2026", t: "2,200+ Clients · 89 Industries", d: "Featured profiles on Medium, a 4.9★ client rating, and signature offerings like KPI Dashboard Systems setting the agency apart." },
+          { y: "2026", t: "2,700+ Clients · 89 Industries", d: "Featured profiles on Medium, a 4.9★ client rating, and signature offerings like KPI Dashboard Systems setting the agency apart." },
         ].map((m, i) => (
           <FadeIn key={i} delay={i * 60}>
             <div style={{ display: "flex", gap: 20, marginBottom: 6 }}>

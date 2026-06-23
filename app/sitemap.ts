@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const industries = Object.keys(INDUSTRY_DATA).map((id) => u(`/industries/${id}/`, 0.7, "monthly"));
-  const cityPages = LOCATIONS.map((l: any) => u(`/digital-marketing-services-${l.id}/`, 0.6, "monthly"));
+  const cityPages = LOCATIONS.map((l: any) => u(`/locations/${l.id}/`, 0.6, "monthly"));
 
   const seenB = new Set<string>();
   const blogs = getAllBlogs().flatMap((b: any) => {

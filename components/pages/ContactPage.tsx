@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState } from "react";
 import { useGo } from "../../lib/nav";
 import { T } from "../../lib/data";
 import { SectionHead, SocialIconRow, Crumb } from "../ui";
@@ -7,7 +7,7 @@ import { SectionHead, SocialIconRow, Crumb } from "../ui";
 function ContactPage({ go }) {
   const [form, setForm] = useState({ name:"", email:"", phone:"", service:"", message:"" });
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
+
   const [error, setError] = useState("");
 
   const upd = (k,v) => { setForm(p=>({...p,[k]:v})); setError(""); };
@@ -21,39 +21,20 @@ function ContactPage({ go }) {
     return null;
   }
 
-  async function sendEmail() {
+  function openMailApp() {
     const validationError = validate();
     if (validationError) { setError(validationError); return; }
 
-    setSending(true);
-    setError("");
-
-    try {
-      const res = await fetch("/api/contact/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          service: form.service,
-          message: form.message.trim(),
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Something went wrong. Please try again.");
-        return;
-      }
-
-      setSent(true);
-    } catch (err) {
-      setError("Network error. Please check your connection and try again.");
-    } finally {
-      setSending(false);
-    }
+    const subject = encodeURIComponent(
+      `Enquiry from ${form.name.trim()}${form.service ? ` – ${form.service}` : ""}`
+    );
+    const body = encodeURIComponent(
+      `Hi Business Volunteers,\n\nName: ${form.name.trim()}\nEmail: ${form.email.trim()}\nPhone: ${form.phone.trim() || "N/A"}\nService: ${form.service || "N/A"}\n\n${form.message.trim()}`
+    );
+    window.open(
+      `mailto:contact.businessvolunteers@gmail.com?subject=${subject}&body=${body}`,
+      "_self"
+    );
   }
 
   function sendWhatsApp() {
@@ -120,18 +101,9 @@ function ContactPage({ go }) {
 
             {/* Two CTA buttons */}
             <div className="bv-contact-btn-grid">
-              <button onClick={sendEmail} disabled={sending} style={{ background: sending ? T.text2 : T.ink, color:"#fff", borderRadius:50, padding:"14px", fontWeight:800, fontSize:13.5, border:"none", cursor: sending ? "not-allowed" : "pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8, opacity: sending ? 0.7 : 1, transition:"opacity 0.2s" }}>
-                {sending ? (
-                  <>
-                    <span style={{ display:"inline-block", width:16, height:16, border:"2px solid rgba(255,255,255,0.3)", borderTopColor:"#fff", borderRadius:"50%", animation:"spin 0.7s linear infinite" }} />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    Send via Email
-                  </>
-                )}
+              <button onClick={openMailApp} style={{ background:T.ink, color:"#fff", borderRadius:50, padding:"14px", fontWeight:800, fontSize:13.5, border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Send via Email
               </button>
               <button onClick={sendWhatsApp} style={{ background:"#25d366", color:"#fff", borderRadius:50, padding:"14px", fontWeight:800, fontSize:13.5, border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.39 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.27z"/></svg>
@@ -139,11 +111,8 @@ function ContactPage({ go }) {
               </button>
             </div>
             <div style={{ textAlign:"center", color:T.text2, fontSize:11.5, marginTop:12 }}>
-              Email sends your message directly. WhatsApp opens the app pre-filled.
+              Email opens your mail app pre-filled. WhatsApp opens the app pre-filled.
             </div>
-
-            {/* Spinner animation */}
-            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
           </>
         )}
       </div>

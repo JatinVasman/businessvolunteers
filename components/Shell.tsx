@@ -56,7 +56,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           <div style={{ fontWeight: 700, fontSize: 13.5, color: "#fff", marginBottom: 13, fontFamily: T.serif }}>Our Services Are Available In Domestic Locations</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginBottom: 24 }}>
             {LOCATIONS.filter(l => l.type === "domestic").map(l => (
-              <a key={l.id} href={`/digital-marketing-services-${l.id}/`}
+              <a key={l.id} href={`/locations/${l.id}/`}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = T.gold; e.currentTarget.style.color = "#fff"; e.currentTarget.style.background = "rgba(201,150,59,0.14)"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)"; e.currentTarget.style.color = "rgba(255,255,255,0.82)"; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
                 style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.82)", borderRadius: 50, padding: "7px 16px", fontSize: 12.5, cursor: "pointer", fontWeight: 500, transition: "all .2s", display: "inline-block", textDecoration: "none" }}>{l.name}</a>
@@ -65,7 +65,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           <div style={{ fontWeight: 700, fontSize: 13.5, color: "#fff", marginBottom: 13, fontFamily: T.serif }}>Our Services Are Available In International Locations</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 9 }}>
             {LOCATIONS.filter(l => l.type === "intl").map(l => (
-              <a key={l.id} href={`/digital-marketing-services-${l.id}/`}
+              <a key={l.id} href={`/locations/${l.id}/`}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = T.gold; e.currentTarget.style.color = "#fff"; e.currentTarget.style.background = "rgba(201,150,59,0.14)"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)"; e.currentTarget.style.color = "rgba(255,255,255,0.82)"; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
                 style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.82)", borderRadius: 50, padding: "7px 16px", fontSize: 12.5, cursor: "pointer", fontWeight: 500, transition: "all .2s", display: "inline-block", textDecoration: "none" }}>{l.name}</a>

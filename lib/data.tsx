@@ -776,7 +776,7 @@ export function articleFaqs(ctx, name, kw) {
     [`How do I measure whether marketing is actually working?`, `Track enquiries, cost per lead and revenue attributed — not likes. Our KPI dashboards (from ₹2,000) put these numbers in front of you in real time.`],
     [`What are the biggest mistakes ${name.toLowerCase()} make online?`, `Ignoring reviews, boosting posts instead of running structured ads, no WhatsApp follow-up system, and websites without clear enquiry capture. All four are fixable within a month.`],
     [`How do I retain ${cu} and drive repeat business?`, `An opted-in WhatsApp list with monthly value broadcasts typically lifts repeat business 25–40%. It is the cheapest revenue most businesses never build.`],
-    [`Why choose Business Volunteers for ${kw} marketing?`, `Founder-led execution, transparent pricing from ₹149 deliverables to full retainers, no lock-in contracts, and 2,200+ clients across 89 industries. Visit businessvolunteers.online or WhatsApp us for a free consultation.`],
+    [`Why choose Business Volunteers for ${kw} marketing?`, `Founder-led execution, transparent pricing from ₹149 deliverables to full retainers, no lock-in contracts, and 2,700+ clients across 89 industries. Visit businessvolunteers.online or WhatsApp us for a free consultation.`],
   ];
 }
 
@@ -1105,8 +1105,8 @@ export const SOCIAL_LINKS = [
 ];
 
 export const SEO_META = {
-  home: { t: "Business Volunteers – Digital Marketing Agency India | 89 Industries", m: "Pan-India digital marketing agency delivering SEO, ads, design, websites & KPI dashboards for 2,200+ businesses across 89 industries." },
-  "about-overview": { t: "About Business Volunteers – Mission, Culture & Leadership", m: "Business Volunteers is a pan-India digital marketing agency. Explore our mission, transparent approach, and founder-led team delivering growth for 2,200+ businesses." },
+  home: { t: "Business Volunteers – Digital Marketing Agency India | 89 Industries", m: "Pan-India digital marketing agency delivering SEO, ads, design, websites & KPI dashboards for 2,700+ businesses across 89 industries." },
+  "about-overview": { t: "About Business Volunteers – Mission, Culture & Leadership", m: "Business Volunteers is a pan-India digital marketing agency. Explore our mission, transparent approach, and founder-led team delivering growth for 2,700+ businesses." },
   founder: { t: "Harsh Chaudhary – Founder & CEO, Business Volunteers", m: "Meet Harsh Chaudhary, digital marketing strategist and founder of Business Volunteers. Learn his vision and expertise in SEO, social media, and lead generation." },
   cofounder: { t: "Khwahish Sahai – Co-Founder & Creative Lead, Business Volunteers", m: "Discover Khwahish Sahai's journey in branding and digital design. Read how she creates compelling campaigns for clients of Business Volunteers." },
   why: { t: "Why Business Volunteers – Result-Driven Marketing Partner", m: "Compare Business Volunteers vs freelancers, big agencies and in-house teams. Founder-led, transparent, ROI-obsessed digital marketing." },
@@ -1159,7 +1159,7 @@ export const SCHEMA_LOCAL = `{
   "url": "https://businessvolunteers.online",
   "logo": "https://businessvolunteers.online/logo.png",
   "image": "https://businessvolunteers.online/logo.png",
-  "description": "Pan-India digital marketing agency delivering SEO, ads, design, websites & KPI dashboards for 2,200+ businesses across 89 industries.",
+  "description": "Pan-India digital marketing agency delivering SEO, ads, design, websites & KPI dashboards for 2,700+ businesses across 89 industries.",
   "telephone": "+918586989832",
   "email": "contact.businessvolunteers@gmail.com",
   "address": {

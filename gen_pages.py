@@ -211,7 +211,7 @@ footer h4{color:var(--goldL);font-size:11px;letter-spacing:2.5px;text-transform:
   </div>
   <div class="stats">
     <div class="stat"><div class="n">89+</div><div class="l">Industries served</div></div>
-    <div class="stat"><div class="n">2,200+</div><div class="l">Clients & projects</div></div>
+    <div class="stat"><div class="n">2,700+</div><div class="l">Clients & projects</div></div>
     <div class="stat"><div class="n">₹150</div><div class="l">Design starts from</div></div>
     <div class="stat"><div class="n">24/7</div><div class="l">Organic lead engine</div></div>
   </div>
