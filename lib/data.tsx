@@ -1033,7 +1033,7 @@ export const MINDSET = [
 export const DIFFS = [
   { icon: "🎯", t: "Result-Driven, Not Vanity-Driven", d: "We prove ROI with case metrics — leads, revenue and rankings, not just likes and impressions." },
   { icon: "🏛️", t: "Full-Service Under One Roof", d: "SEO, ads, design, web, video, CRM and dashboards — one accountable team saves you time and cost." },
-  { icon: "🇮🇳", t: "Pan-India, Local Focus", d: "National reach with regional insight. Noida roots, multi-city success stories across 89 industries." },
+  { icon: "🇮🇳", t: "Pan-India, Local Focus", d: "National reach with regional insight. Noida & New Ashok Nagar, Delhi roots, multi-city success stories across 89 industries." },
   { icon: "👑", t: "Founder-Led Team", d: "Decision-makers stay on your account — your project is never passed down to juniors." },
 ];
 
@@ -1116,7 +1116,7 @@ export const SEO_META = {
   casestudies: { t: "Marketing Case Studies – Results by Business Volunteers", m: "See how Business Volunteers helped clients across industries achieve growth. Real results from SEO, ads and social media campaigns." },
   blog: { t: "Business Volunteers Blog – Marketing Insights & Tips", m: "Stay updated on the latest digital marketing trends, SEO tips, and success stories from Business Volunteers' industry experts." },
   pricing: { t: "Pricing – Digital Marketing Packages & ROI Models", m: "Transparent digital marketing pricing: flexible plans and pay-as-you-go options. High ROI without lock-in contracts." },
-  contact: { t: "Contact Business Volunteers – Start a Project", m: "Talk to the Business Volunteers team. Free strategy consultation, 2-hour response time, Noida Sector 62 & pan-India." },
+  contact: { t: "Contact Business Volunteers – Start a Project", m: "Talk to the Business Volunteers team. Free strategy consultation, 2-hour response time, Noida Sector 62 & New Ashok Nagar, Delhi, 110096." },
 };
 
 // ── SCHEMA SNIPPETS ───────────────────────────────────────────────────────────
@@ -1149,6 +1149,7 @@ export const SCHEMA_ORG = `{
   "foundingDate": "2025",
   "founder": { "@type": "Person", "name": "Harsh Chaudhary" },
   "address": { "@type": "PostalAddress", "streetAddress": "Sector 62, Noida", "addressLocality": "Noida", "addressRegion": "UP", "postalCode": "201309", "addressCountry": "IN" },
+  "location": [{ "@type": "PostalAddress", "streetAddress": "New Ashok Nagar", "addressLocality": "Delhi", "addressRegion": "Delhi", "postalCode": "110096", "addressCountry": "IN" }],
   "contactPoint": { "@type": "ContactPoint", "telephone": "+918586989832", "contactType": "customer service" }
 }`;
 
@@ -1170,6 +1171,14 @@ export const SCHEMA_LOCAL = `{
     "postalCode": "201309",
     "addressCountry": "IN"
   },
+  "location": [{
+    "@type": "PostalAddress",
+    "streetAddress": "New Ashok Nagar",
+    "addressLocality": "Delhi",
+    "addressRegion": "Delhi",
+    "postalCode": "110096",
+    "addressCountry": "IN"
+  }],
   "geo": { "@type": "GeoCoordinates", "latitude": 28.6272, "longitude": 77.3719 },
   "openingHours": "Mo-Sa 09:00-18:00",
   "priceRange": "₹₹",

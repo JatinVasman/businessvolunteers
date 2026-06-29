@@ -246,7 +246,7 @@ footer h4{color:var(--goldL);font-size:11px;letter-spacing:2.5px;text-transform:
 <footer><div class="wrap">
   <h4>We Also Serve These Locations</h4>
   <div class="fchips">__CROSS__</div>
-  <div class="fbot">&copy; 2026 Business Volunteers &middot; SEO, ads, social, web &amp; design &middot; Noida Sector 62, India &middot; <a href="__WA__" target="_blank" rel="noopener" style="color:var(--goldL)">+91 85869 89832</a></div>
+  <div class="fbot">&copy; 2026 Business Volunteers &middot; SEO, ads, social, web &amp; design &middot; Noida Sector 62, India &middot; New Ashok Nagar, Delhi, 110096 &middot; <a href="__WA__" target="_blank" rel="noopener" style="color:var(--goldL)">+91 85869 89832</a></div>
 </div></footer>
 <script>
 function bvSend(e){

@@ -65,6 +65,7 @@ const ORG_SCHEMA = {
       logo: "https://businessvolunteers.online/favicon.png",
       description: "Founder-led digital marketing agency serving 89+ industries.",
       address: { "@type": "PostalAddress", addressLocality: "Noida", addressRegion: "Uttar Pradesh", addressCountry: "IN" },
+      location: [{ "@type": "PostalAddress", streetAddress: "New Ashok Nagar", addressLocality: "Delhi", addressRegion: "Delhi", postalCode: "110096", addressCountry: "IN" }],
       contactPoint: { "@type": "ContactPoint", telephone: "+91-85869-89832", contactType: "sales", areaServed: "IN" },
     },
     {

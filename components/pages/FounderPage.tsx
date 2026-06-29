@@ -83,7 +83,7 @@ function FounderPage({ go }) {
         {[
           { y: "Foundation", t: "Creative Education", d: "B.Sc in Animation & VFX from AAFT, Film City Noida — building the visual storytelling instincts that now power our creative studio." },
           { y: "Apprenticeship", t: "Hands-On Marketing & Operations", d: "Years across HR operations, executive support, MIS reporting and performance dashboards — learning how businesses really run from the inside." },
-          { y: "2025", t: "Business Volunteers Founded", d: "Launched in Noida Sector 62 with a singular mission: make every brand we work with unstoppable through affordable, accountable marketing." },
+          { y: "2025", t: "Business Volunteers Founded", d: "Launched in Noida Sector 62 & New Ashok Nagar, Delhi, 110096 with a singular mission: make every brand we work with unstoppable through affordable, accountable marketing." },
           { y: "2026", t: "2,700+ Clients · 89 Industries", d: "Featured profiles on Medium, a 4.9★ client rating, and signature offerings like KPI Dashboard Systems setting the agency apart." },
         ].map((m, i) => (
           <FadeIn key={i} delay={i * 60}>

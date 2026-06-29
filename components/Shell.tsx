@@ -49,6 +49,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <a href="mailto:contact.businessvolunteers@gmail.com" style={{ display: "block", color: "rgba(255,255,255,0.6)", fontSize: 12.5, marginBottom: 8 }}>contact.businessvolunteers@gmail.com</a>
             <a href="https://wa.me/918586989832" target="_blank" rel="noopener noreferrer" style={{ display: "block", color: "rgba(255,255,255,0.6)", fontSize: 12.5, marginBottom: 8 }}>+91 85869 89832</a>
             <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 12.5 }}>Noida Sector 62, UP 201309</div>
+            <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 12.5 }}>New Ashok Nagar, Delhi, 110096</div>
           </div>
         </div>
         {/* Service locations */}

@@ -54,6 +54,7 @@ function ContactPage({ go }) {
           { icon:"✉", l:"Email", v:"contact.businessvolunteers@gmail.com", h:"mailto:contact.businessvolunteers@gmail.com" },
           { icon:"☏", l:"WhatsApp", v:"+91 85869 89832", h:"https://wa.me/918586989832" },
           { icon:"◉", l:"Location", v:"Noida Sector 62, UP", h:"#" },
+          { icon:"◉", l:"Location", v:"New Ashok Nagar, Delhi, 110096", h:"#" },
           { icon:"◷", l:"Hours", v:"Mon–Sat · 9AM–6PM IST", h:"#" },
         ].map((c,i)=>(
           <a key={i} href={c.h} {...(c.h.startsWith("mailto:") ? {} : { target:"_blank", rel:"noopener noreferrer" })}

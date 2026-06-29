@@ -17,7 +17,7 @@ function AboutOverview({ go }) {
       <FadeIn>
         <div style={{ background: T.bg2, border: `1px solid ${T.cardB}`, borderRadius: 22, padding: 32, marginBottom: 24, boxShadow: `0 10px 32px ${T.shadow}` }}>
           <p style={{ color: T.text2, fontSize: 14.5, lineHeight: 1.95, margin: 0 }}>
-            Business Volunteers was founded in 2025 in Noida Sector 62 with a simple, stubborn idea: every Indian business — from a single-chair dental clinic to a multi-city hospital chain — deserves marketing that is transparent, measurable and genuinely cared for. In one year we've partnered with 2,700+ businesses across 89 industries, holding a 4.9★ average rating and a post-pay option that puts the risk on us, not you. The name says it all — we show up like volunteers for your mission, and work like owners of your results.
+            Business Volunteers was founded in 2025 in Noida Sector 62 & New Ashok Nagar, Delhi, 110096 with a simple, stubborn idea: every Indian business — from a single-chair dental clinic to a multi-city hospital chain — deserves marketing that is transparent, measurable and genuinely cared for. In one year we've partnered with 2,700+ businesses across 89 industries, holding a 4.9★ average rating and a post-pay option that puts the risk on us, not you. The name says it all — we show up like volunteers for your mission, and work like owners of your results.
           </p>
         </div>
       </FadeIn>

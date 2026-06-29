@@ -60,6 +60,7 @@ function baseLayout(title: string, bodyHtml: string): string {
     </div>
     <div class="footer">
       <p>&copy; ${new Date().getFullYear()} ${BRAND.companyName} &middot; Noida Sector 62, UP 201309</p>
+      <p>New Ashok Nagar, Delhi, 110096</p>
       <p>
         <a href="${BRAND.siteUrl}">Website</a> &middot;
         <a href="https://wa.me/918586989832">WhatsApp</a> &middot;
