@@ -81,7 +81,7 @@ function HomePage({ go, openService }) {
       <SectionHead eyebrow="Founder-Led" title="The People Behind the Results" sub="Decision-makers stay on your account — meet the founders who run every engagement." />
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(290px,1fr))", gap:18, marginBottom:80 }}>
         {[
-          { ini:"HC", grad:T.gradLux, img:FOUNDER_IMG, inkTxt:false, name:"Harsh Chaudhary", role:"Founder & CEO", d:"Data-driven strategy, creative storytelling and bold execution — turning brands into category leaders.", page:"founder" },
+          { ini:"JV", grad:T.gradLux, img:FOUNDER_IMG, inkTxt:false, name:"Jatin Vasman", role:"Founder & CEO", d:"Web development, data-driven strategy and bold execution — turning brands into category leaders.", page:"founder" },
           { ini:"KS", grad:T.gradGold, img:COFOUNDER_IMG, inkTxt:true, name:"Khwahish Sahai", role:"Co-Founder & Creative Director", d:"The premium creative standard behind every identity, campaign and conversion-first design.", page:"cofounder" },
         ].map((p,i)=>(
           <FadeIn key={p.ini} delay={i*80}>

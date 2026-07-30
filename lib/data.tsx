@@ -1107,7 +1107,7 @@ export const SOCIAL_LINKS = [
 export const SEO_META = {
   home: { t: "Business Volunteers – Digital Marketing Agency India | 89 Industries", m: "Pan-India digital marketing agency delivering SEO, ads, design, websites & KPI dashboards for 2,700+ businesses across 89 industries." },
   "about-overview": { t: "About Business Volunteers – Mission, Culture & Leadership", m: "Business Volunteers is a pan-India digital marketing agency. Explore our mission, transparent approach, and founder-led team delivering growth for 2,700+ businesses." },
-  founder: { t: "Harsh Chaudhary – Founder & CEO, Business Volunteers", m: "Meet Harsh Chaudhary, digital marketing strategist and founder of Business Volunteers. Learn his vision and expertise in SEO, social media, and lead generation." },
+  founder: { t: "Jatin Vasman – Founder & CEO, Business Volunteers", m: "Meet Jatin Vasman, digital marketing strategist and founder of Business Volunteers. Learn his vision and expertise in SEO, social media, and lead generation." },
   cofounder: { t: "Khwahish Sahai – Co-Founder & Creative Lead, Business Volunteers", m: "Discover Khwahish Sahai's journey in branding and digital design. Read how she creates compelling campaigns for clients of Business Volunteers." },
   why: { t: "Why Business Volunteers – Result-Driven Marketing Partner", m: "Compare Business Volunteers vs freelancers, big agencies and in-house teams. Founder-led, transparent, ROI-obsessed digital marketing." },
   team: { t: "Meet Our Team – Experts in SEO, Ads & Design | Business Volunteers", m: "Get to know the marketing experts at Business Volunteers – from strategists and designers to developers, dedicated to driving your growth." },
@@ -1124,12 +1124,12 @@ export const SEO_META = {
 export const SCHEMA_FOUNDER = `{
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Harsh Chaudhary",
+  "name": "Jatin Vasman",
   "jobTitle": "Founder & CEO",
   "worksFor": { "@type": "Organization", "name": "Business Volunteers", "url": "https://businessvolunteers.online" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "AAFT - Film City" },
-  "image": "https://businessvolunteers.online/images/harsh-photo.jpg",
-  "sameAs": ["https://www.linkedin.com/in/heyharsh2026", "https://instagram.com/thebusinessvolunteers"]
+  "image": "https://businessvolunteers.online/jatin_vasman.jpeg",
+  "sameAs": ["https://www.linkedin.com/in/jatin-vasman?utm_source=share_via&utm_content=profile&utm_medium=member_android", "https://instagram.com/thebusinessvolunteers"]
 }`;
 
 export const SCHEMA_COFOUNDER = `{
@@ -1147,7 +1147,7 @@ export const SCHEMA_ORG = `{
   "url": "https://businessvolunteers.online",
   "logo": "https://businessvolunteers.online/logo.png",
   "foundingDate": "2025",
-  "founder": { "@type": "Person", "name": "Harsh Chaudhary" },
+  "founder": { "@type": "Person", "name": "Jatin Vasman" },
   "address": { "@type": "PostalAddress", "streetAddress": "Sector 62, Noida", "addressLocality": "Noida", "addressRegion": "UP", "postalCode": "201309", "addressCountry": "IN" },
   "location": [{ "@type": "PostalAddress", "streetAddress": "New Ashok Nagar", "addressLocality": "Delhi", "addressRegion": "Delhi", "postalCode": "110096", "addressCountry": "IN" }],
   "contactPoint": { "@type": "ContactPoint", "telephone": "+918586989832", "contactType": "customer service" }
@@ -1221,7 +1221,7 @@ export const btnGhost = { background: "transparent", color: T.ink, borderRadius:
 
 export const ABOUT_PAGES = [
   { k: "about-overview", l: "About Business Volunteers" },
-  { k: "founder", l: "Founder — Harsh Chaudhary" },
+  { k: "founder", l: "Founder — Jatin Vasman" },
   { k: "cofounder", l: "Co-Founder — Khwahish Sahai" },
   { k: "why", l: "Why Business Volunteers" },
   { k: "team", l: "Our Team" },
@@ -1428,9 +1428,10 @@ export const SMM_PORTFOLIO = [
   },
 ];
 
-export const FOUNDER_IMG = "/img28.jpg";
+export const FOUNDER_IMG = "/jatin_vasman.jpeg";
+export const HARSH_FOUNDER_IMG = "/harsh.jpg";
 
-export const COFOUNDER_IMG = "/img29.jpg";
+export const COFOUNDER_IMG = "/Khauish.jpg";
 
 export const SHOTS = {
   vasoo: "/img30.jpg",

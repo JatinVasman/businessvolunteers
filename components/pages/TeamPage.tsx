@@ -15,7 +15,7 @@ function TeamPage({ go }) {
 
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(290px,1fr))", gap:18, marginBottom:40 }}>
         {[
-          { ini:"HC", grad:T.gradLux, img:FOUNDER_IMG, name:"Harsh Chaudhary", role:"Founder & CEO", d:"Strategy, growth systems and KPI dashboards. The owner's eye on every account.", page:"founder", inkBtn:true },
+          { ini:"JV", grad:T.gradLux, img:FOUNDER_IMG, name:"Jatin Vasman", role:"Founder & CEO", d:"Web development, system architecture & growth dashboards. B.Tech in CS with a founder's eye on every account.", page:"founder", inkBtn:true },
           { ini:"KS", grad:T.gradGold, img:COFOUNDER_IMG, name:"Khwahish Sahai", role:"Co-Founder & Creative Director", d:"Brand identity, campaign creative and the premium standard across all deliverables.", page:"cofounder" },
         ].map((p,i)=>(
           <FadeIn key={i} delay={i*70}>
