@@ -1480,7 +1480,7 @@ export const WEB_PORTFOLIO = [
     products: ["🏠 Residential", "🪑 Furniture", "💡 Lighting", "🎨 Bespoke"]
   },
   {
-    id: "rahi", title: "Rahi Homes", url: "https://rahi-homes.vercel.app/",
+    id: "rahi", title: "Rahi Homes", url: "https://rahihomeshostel.com/",
     desc: "Premium real estate listings platform with property search, virtual tours, project showcases and lead capture — designed for modern home buyers in India.",
     tags: ["Real Estate", "Property", "Modern"],
     color1: "#0F766E", color2: "#FFA500", color3: "#1F2937",
