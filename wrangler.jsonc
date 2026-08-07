@@ -5,6 +5,10 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "pages_build_output_dir": ".next",
+  "assets": {
+    "directory": ".next"
+  },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
