@@ -9,17 +9,19 @@ export function generateStaticParams(){
   for (const b of getAllBlogs()){ const slug = slugify(b.title); if(!seen.has(slug)){ seen.add(slug); out.push({ slug }); } }
   return out;
 }
-export function generateMetadata({ params }){
-  const b = getBlogBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }){
+  const { slug } = await params;
+  const b = getBlogBySlug(slug);
   return {
     title: b ? `${b.title} | Business Volunteers` : "Blog | Business Volunteers",
     description: b?.desc || "",
-    alternates: { canonical: `/blog/${params.slug}/` },
-    openGraph: { type: "article", title: b?.title, description: b?.desc, url: `${BASE}/blog/${params.slug}/` },
+    alternates: { canonical: `/blog/${slug}/` },
+    openGraph: { type: "article", title: b?.title, description: b?.desc, url: `${BASE}/blog/${slug}/` },
   };
 }
-export default function Page({ params }){
-  const b = getBlogBySlug(params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }){
+  const { slug } = await params;
+  const b = getBlogBySlug(slug);
   if(!b) notFound();
   const mt = blogMeta(b);
   const schema = {
@@ -27,12 +29,12 @@ export default function Page({ params }){
     "@graph": [
       { "@type": "Article", headline: b.title, description: b.desc || "",
         author: { "@type": "Organization", name: "Business Volunteers" },
-        publisher: { "@id": `${BASE}/#org` }, mainEntityOfPage: `${BASE}/blog/${params.slug}/`,
+        publisher: { "@id": `${BASE}/#org` }, mainEntityOfPage: `${BASE}/blog/${slug}/`,
         articleSection: b.tag || "Digital Marketing" },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
         { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
-        { "@type": "ListItem", position: 3, name: b.title, item: `${BASE}/blog/${params.slug}/` },
+        { "@type": "ListItem", position: 3, name: b.title, item: `${BASE}/blog/${slug}/` },
       ]},
     ],
   };
