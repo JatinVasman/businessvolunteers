@@ -1,24 +1,17 @@
-// ── MonkeysMail API client with retry logic ───────────────────────────────────
+// ── Resend API client with retry logic ────────────────────────────────────────
 
-import type { MonkeysMailPayload, MonkeysMailResponse, EmailResult } from "./types";
+import type { ResendPayload, ResendResponse, EmailResult } from "./types";
 
 // ── Config from environment ──────────────────────────────────────────────────
 
-function getConfig() {
-  const apiKey = process.env.MONKEYSMAIL_API_KEY;
-  const domain = process.env.MONKEYSMAIL_DOMAIN;
-
-  if (!apiKey || !domain) {
+function getApiKey(): string {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
     throw new Error(
-      "[Email] Missing env vars: MONKEYSMAIL_API_KEY and MONKEYSMAIL_DOMAIN must be set."
+      "[Email] Missing env var: RESEND_API_KEY must be set."
     );
   }
-
-  return {
-    apiKey,
-    domain,
-    baseUrl: `https://api.monkeysmail.com/api/v2/${domain}`,
-  };
+  return apiKey;
 }
 
 // ── Retry helper ─────────────────────────────────────────────────────────────
@@ -33,29 +26,45 @@ async function sleep(ms: number) {
 // ── Core send function ───────────────────────────────────────────────────────
 
 /**
- * Send an email via the MonkeysMail REST API.
+ * Send an email via the Resend REST API.
  *
- * Retries transient failures (5xx, network errors) up to 3 times with
- * exponential backoff. Client errors (4xx) fail immediately.
+ * Retries transient failures (5xx, 429, network errors) up to 3 times with
+ * exponential backoff. Client errors (4xx except 429) fail immediately.
  */
-export async function sendEmail(payload: MonkeysMailPayload): Promise<EmailResult> {
-  const { apiKey, baseUrl } = getConfig();
-
-  const authHeader =
-    "Basic " + Buffer.from(`api:${apiKey}`).toString("base64");
+export async function sendEmail(payload: ResendPayload): Promise<EmailResult> {
+  const apiKey = getApiKey();
 
   let lastError: unknown;
 
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
-      const res = await fetch(`${baseUrl}/messages`, {
+      const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: authHeader,
+          Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify(payload),
       });
+
+      // 429 → rate limited, retry
+      if (res.status === 429) {
+        console.warn(
+          `[Email] Rate limited (attempt ${attempt}/${MAX_RETRIES})`
+        );
+        lastError = "Rate limited";
+        if (attempt < MAX_RETRIES) {
+          await sleep(INITIAL_DELAY_MS * Math.pow(2, attempt - 1));
+          continue;
+        }
+        return {
+          ok: false,
+          error: {
+            code: "API",
+            message: `Resend rate limited after ${MAX_RETRIES} attempts`,
+          },
+        };
+      }
 
       // 4xx → client error, don't retry
       if (res.status >= 400 && res.status < 500) {
@@ -65,7 +74,7 @@ export async function sendEmail(payload: MonkeysMailPayload): Promise<EmailResul
           ok: false,
           error: {
             code: "API",
-            message: `MonkeysMail returned ${res.status}`,
+            message: `Resend returned ${res.status}`,
             details: body,
           },
         };
@@ -87,16 +96,16 @@ export async function sendEmail(payload: MonkeysMailPayload): Promise<EmailResul
           ok: false,
           error: {
             code: "API",
-            message: `MonkeysMail returned ${res.status} after ${MAX_RETRIES} attempts`,
+            message: `Resend returned ${res.status} after ${MAX_RETRIES} attempts`,
             details: body,
           },
         };
       }
 
       // Success
-      const data = (await res.json()) as MonkeysMailResponse;
-      console.log(`[Email] Sent successfully: ${data.data.id}`);
-      return { ok: true, id: data.data.id };
+      const data = (await res.json()) as ResendResponse;
+      console.log(`[Email] Sent successfully: ${data.id}`);
+      return { ok: true, id: data.id };
     } catch (err) {
       // Network / DNS / timeout errors → retry
       console.warn(
@@ -114,7 +123,7 @@ export async function sendEmail(payload: MonkeysMailPayload): Promise<EmailResul
     ok: false,
     error: {
       code: "NETWORK",
-      message: `Failed to reach MonkeysMail after ${MAX_RETRIES} attempts`,
+      message: `Failed to reach Resend after ${MAX_RETRIES} attempts`,
       details: lastError instanceof Error ? lastError.message : String(lastError),
     },
   };

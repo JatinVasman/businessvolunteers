@@ -3,7 +3,7 @@
 // All templates share a base layout for consistent BV branding.
 // To add a new template: create a new exported function that calls baseLayout().
 
-import type { ContactFormData, MonkeysMailPayload } from "./types";
+import type { ContactFormData, ResendPayload } from "./types";
 
 // ── Brand tokens (matching the site theme) ───────────────────────────────────
 
@@ -74,8 +74,8 @@ function baseLayout(title: string, bodyHtml: string): string {
 
 // ── Template: Contact form notification (sent to BV team) ────────────────────
 
-export function contactFormNotification(data: ContactFormData): MonkeysMailPayload {
-  const domain = process.env.MONKEYSMAIL_DOMAIN || "mail.businessvolunteers.online";
+export function contactFormNotification(data: ContactFormData): ResendPayload {
+  const fromDomain = process.env.RESEND_FROM_DOMAIN || "businessvolunteers.online";
   const to = process.env.CONTACT_EMAIL_TO || "contact.businessvolunteers@gmail.com";
 
   const serviceRow = data.service
@@ -106,19 +106,22 @@ export function contactFormNotification(data: ContactFormData): MonkeysMailPaylo
   );
 
   return {
-    from: `noreply@${domain}`,
-    from_name: BRAND.companyName,
+    from: `${BRAND.companyName} <noreply@${fromDomain}>`,
     to,
+    reply_to: data.email,
     subject: `New Enquiry from ${data.name} – ${data.service || "General"}`,
     html,
-    tags: ["contact-form", "notification"],
+    tags: [
+      { name: "category", value: "contact-form" },
+      { name: "type", value: "notification" },
+    ],
   };
 }
 
 // ── Template: Auto-reply confirmation (sent to the visitor) ──────────────────
 
-export function contactFormAutoReply(data: ContactFormData): MonkeysMailPayload {
-  const domain = process.env.MONKEYSMAIL_DOMAIN || "mail.businessvolunteers.online";
+export function contactFormAutoReply(data: ContactFormData): ResendPayload {
+  const fromDomain = process.env.RESEND_FROM_DOMAIN || "businessvolunteers.online";
 
   const html = baseLayout(
     "We received your message!",
@@ -140,12 +143,14 @@ export function contactFormAutoReply(data: ContactFormData): MonkeysMailPayload 
   );
 
   return {
-    from: `noreply@${domain}`,
-    from_name: BRAND.companyName,
+    from: `${BRAND.companyName} <noreply@${fromDomain}>`,
     to: data.email,
     subject: "We received your message — Business Volunteers",
     html,
-    tags: ["contact-form", "auto-reply"],
+    tags: [
+      { name: "category", value: "contact-form" },
+      { name: "type", value: "auto-reply" },
+    ],
   };
 }
 

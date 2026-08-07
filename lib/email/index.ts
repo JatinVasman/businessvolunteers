@@ -5,4 +5,4 @@
 
 export { sendEmail } from "./client";
 export { contactFormNotification, contactFormAutoReply } from "./templates";
-export type { ContactFormData, EmailResult, EmailError } from "./types";
+export type { ContactFormData, EmailResult, EmailError, ResendPayload } from "./types";

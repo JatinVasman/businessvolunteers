@@ -9,20 +9,19 @@ export interface ContactFormData {
   message: string;
 }
 
-/** Payload accepted by the MonkeysMail REST API v2 /messages endpoint. */
-export interface MonkeysMailPayload {
+/** Payload accepted by the Resend API POST /emails endpoint. */
+export interface ResendPayload {
   from: string;
-  from_name: string;
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
-  variables?: Record<string, string>;
-  tags?: string[];
+  reply_to?: string;
+  tags?: { name: string; value: string }[];
 }
 
-/** Successful response from MonkeysMail. */
-export interface MonkeysMailResponse {
-  data: { id: string; message: string };
+/** Successful response from Resend. */
+export interface ResendResponse {
+  id: string;
 }
 
 /** Structured error for failed sends. */
