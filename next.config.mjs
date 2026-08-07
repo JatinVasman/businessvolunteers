@@ -7,6 +7,5 @@ const nextConfig = {
   reactStrictMode: true,
   // The original project is loosely typed (esbuild, strict:false). Keep that:
   typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
 };
 export default nextConfig;
